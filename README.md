@@ -1,7 +1,7 @@
 # Some extra libraries in c that may be usefull
 ## Usage
 To use the libraries go into the `src` dir,
-copy the corret header file in the `include` dir and if it exists, the matching header file.
+copy the corret header file in the `include` dir and if it exists, the matching c file.
 
 ## Examples
 To build the examples run the build script matching your terminal/os.
