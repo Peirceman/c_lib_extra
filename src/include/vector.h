@@ -2,8 +2,8 @@
 #include <stdlib.h>
 #include <string.h>
 
-#ifndef MY_VECTOR_H_
-#define MY_VECTOR_H_
+#ifndef VECTOR_H_
+#define VECTOR_H_
 
 #define vec_type(type) type *
 
@@ -85,4 +85,4 @@
 		}                                                                                        \
 	} while(0)                                                                                   \
 
-#endif /* MY_VECTOR_H_ */
+#endif /* VECTOR_H_ */
