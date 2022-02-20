@@ -14,7 +14,7 @@
 
 
 typedef int (*eq_func) ();
-typedef int (*hash_func) ();
+typedef unsigned int (*hash_func) ();
 
 typedef struct Entry {
 	struct Entry *next;

@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <set.h>
 
-int int_hash(int *a) {
+unsigned int int_hash(int *a) {
 	return *a;
 }
 

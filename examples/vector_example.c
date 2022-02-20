@@ -16,7 +16,7 @@ int main(void) {
 
 	printf("fruits size: %zu\n", vec_sz(fruits));
 	printf("fruits cap:  %zu\n", vec_cap(fruits));
-	printf("fruits ptr:  %p\n", fruits);
+	printf("fruits ptr:  %p\n", (void *) fruits);
 
 	vec_free(fruits);
 
@@ -30,5 +30,5 @@ int main(void) {
 
 	printf("nums size: %zu\n", vec_sz(nums));
 	printf("nums cap:  %zu\n", vec_cap(nums));
-	printf("nums ptr:  %p\n", nums);
+	printf("nums ptr:  %p\n", (void *) nums);
 }

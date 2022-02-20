@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <stdio.h>
 
-int int_hash(int *i) {
+unsigned int int_hash(int *i) {
 	return *i;
 }
 
@@ -11,7 +11,7 @@ int int_eq(int *a, int *b) {
 }
 
 int main(void) {
-	Hash_table *ht = HT_init_default(int, int, int_hash, int_eq);
+	Hash_table *ht = HT_init_default(int, int, &int_hash, &int_eq);
 
 	printf("ht cap at start: %zu\n", ht->entries_cap);
 
@@ -38,15 +38,15 @@ int main(void) {
 	printf("ht entry count: %zu\n", ht->count);
 	printf("ht entry cap:   %zu\n", ht->entries_cap);
 
-	printf("ht ptr:        %p\n", ht);
-	printf("ht entry ptr:  %p\n", ht->entries);
+	printf("ht ptr:        %p\n", (void *) ht);
+	printf("ht entry ptr:  %p\n", (void *) ht->entries);
 	HT_free(ht);
 
 	Hash_table *ht2 = HT_init(sizeof(int), sizeof(char *),
 			11, 0.75,
-			int_hash, int_eq);
-	printf("ht2 ptr:       %p\n", ht2);
-	printf("ht2 entry ptr: %p\n", ht2->entries);
+			&int_hash, &int_eq);
+	printf("ht2 ptr:       %p\n", (void *) ht2);
+	printf("ht2 entry ptr: %p\n", (void *) ht2->entries);
 
 	HT_put(ht2, &(int){1}, "1");
 	HT_put(ht2, &(int){2}, "2");

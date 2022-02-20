@@ -38,7 +38,7 @@ static void SET_grow(Set *set, size_t new_cap) {
 		Entry *e = set->entries[i];
 
 		while (e) {
-			int idx = (*set->hash_func)(e->key) % new_cap;
+			unsigned int idx = (*set->hash_func)(e->key) % new_cap;
 
 			e->next = entries[idx];
 			entries[idx] = e;
@@ -53,7 +53,7 @@ static void SET_grow(Set *set, size_t new_cap) {
 }
 
 int SET_add(Set *set, void *key) {
-	int idx = (*set->hash_func)(key) % set->entries_cap;
+	unsigned int idx = (*set->hash_func)(key) % set->entries_cap;
 
 	Entry *e = set->entries[idx];
 
@@ -83,7 +83,7 @@ int SET_add(Set *set, void *key) {
 }
 
 int SET_del(Set *set, void *key) {
-	int idx = (*set->hash_func)(key) % set->entries_cap;
+	unsigned int idx = (*set->hash_func)(key) % set->entries_cap;
 
 	Entry *cur  = set->entries[idx];
 	Entry *prev = NULL;
@@ -112,7 +112,7 @@ int SET_del(Set *set, void *key) {
 }
 
 int SET_contains(Set *set, void *key) {
-	int idx = (*set->hash_func)(key) % set->entries_cap;
+	unsigned int idx = (*set->hash_func)(key) % set->entries_cap;
 
 	Entry*e = set->entries[idx];
 

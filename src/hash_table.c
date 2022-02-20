@@ -28,7 +28,7 @@ Hash_table *HT_init(size_t key_sz, size_t val_sz, size_t entries_cap,
 }
 
 void *HT_get(const Hash_table *hash_table, const void *key) {
-	int idx = (*hash_table->hash_func)(key) % hash_table->entries_cap;
+	unsigned int idx = (*hash_table->hash_func)(key) % hash_table->entries_cap;
 
 	Entry *e = hash_table->entries[idx];
 
@@ -44,7 +44,7 @@ void *HT_get(const Hash_table *hash_table, const void *key) {
 }
 
 void *HT_del(Hash_table *hash_table, const void *key) {
-	int idx = (*hash_table->hash_func)(key) % hash_table->entries_cap;
+	unsigned int idx = (*hash_table->hash_func)(key) % hash_table->entries_cap;
 
 	Entry *cur = hash_table->entries[idx];
 	Entry *prev = NULL;
@@ -89,7 +89,7 @@ static void HT_grow(Hash_table *hash_table, size_t new_cap) {
 		Entry *e = hash_table->entries[i];
 
 		while (e) {
-			int idx = (*hash_table->hash_func)(e->key) % new_cap;
+			unsigned int idx = (*hash_table->hash_func)(e->key) % new_cap;
 
 			e->next = entries[idx];
 			entries[idx] = e;
@@ -104,7 +104,7 @@ static void HT_grow(Hash_table *hash_table, size_t new_cap) {
 }
 
 void *HT_put(Hash_table *hash_table, const void *key, void *val) {
-	int idx = (*hash_table->hash_func)(key) % hash_table->entries_cap;
+	unsigned int idx = (*hash_table->hash_func)(key) % hash_table->entries_cap;
 
 	Entry *e = hash_table->entries[idx];
 
@@ -164,7 +164,7 @@ void HT_free(Hash_table *hash_table) {
 }
 
 int HT_contains_key(const Hash_table *hash_table, const void *key) {
-	int idx = (*hash_table->hash_func)(key) % hash_table->entries_cap;
+	unsigned int idx = (*hash_table->hash_func)(key) % hash_table->entries_cap;
 
 	Entry *e = hash_table->entries[idx];
 
