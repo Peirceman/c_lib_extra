@@ -2,16 +2,8 @@
 #include <stdlib.h>
 #include <stdio.h>
 
-unsigned int int_hash(int *i) {
-	return *i;
-}
-
-int int_eq(int *a, int *b) {
-	return *a == *b;
-}
-
 int main(void) {
-	Hash_table *ht = HT_init_default(int, int, &int_hash, &int_eq);
+	Hash_table *ht = HT_init_default(int, int, &def_int_hash, &def_int_eq);
 
 	printf("ht cap at start: %zu\n", ht->entries_cap);
 
@@ -44,7 +36,7 @@ int main(void) {
 
 	Hash_table *ht2 = HT_init(sizeof(int), sizeof(char *),
 			11, 0.75,
-			&int_hash, &int_eq);
+			&def_int_hash, &def_int_eq);
 	printf("ht2 ptr:       %p\n", (void *) ht2);
 	printf("ht2 entry ptr: %p\n", (void *) ht2->entries);
 

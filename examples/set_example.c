@@ -1,16 +1,8 @@
 #include <stdio.h>
 #include <set.h>
 
-unsigned int int_hash(int *a) {
-	return *a;
-}
-
-int int_eq(int *a, int *b) {
-	return *a == *b;
-}
-
 int main(void) {
-	Set *even_nums = SET_init_default(int, &int_hash, &int_eq);
+	Set *even_nums = SET_init_default(int, &def_int_hash, &def_int_eq);
 
 	printf("set cap at start: %zu\n", even_nums->entries_cap);
 
@@ -38,7 +30,7 @@ int main(void) {
 	SET_free(even_nums);
 
 	Set *set2 = SET_init(sizeof(int), 5,
-		LOAD_FACTOR_NO_GROW, &int_hash, &int_eq);
+		LOAD_FACTOR_NO_GROW, &def_int_hash, &def_int_eq);
 
 	printf("\nset2 cap at start: %zu\n", set2->entries_cap);
 
